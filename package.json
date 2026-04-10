@@ -5,7 +5,9 @@
   "scripts": {
     "start": "PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers tsx src/index.ts",
     "build": "tsc --noEmit",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "leads": "tsx src/leads.ts",
+    "leads:dev": "tsx watch src/leads.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
