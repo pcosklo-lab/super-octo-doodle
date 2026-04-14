@@ -393,6 +393,13 @@ a {
   margin: 0 0 1rem;
 }
 
+.property-address {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
 .property-description {
   color: var(--ink-soft);
   font-size: 0.98rem;
