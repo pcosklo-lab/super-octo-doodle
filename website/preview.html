@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>315 Realty — Preview</title>
+  <meta name="description" content="315 Realty — single-file preview of the full website." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f1b2d;
+      --ink-soft: #1d2a40;
+      --paper: #f7f4ef;
+      --paper-warm: #eee7db;
+      --muted: #6b7280;
+      --line: rgba(15, 27, 45, 0.12);
+      --gold: #b08b4f;
+      --gold-deep: #8e6c36;
+      --white: #ffffff;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.06), 0 4px 12px rgba(15, 27, 45, 0.06);
+      --shadow-md: 0 10px 30px rgba(15, 27, 45, 0.12);
+      --shadow-lg: 0 24px 60px rgba(15, 27, 45, 0.18);
+      --max-w: 1200px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+      background: rgba(247, 244, 239, 0.85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: baseline; gap: 0.5rem; letter-spacing: 0.02em; cursor: pointer; }
+    .brand-mark { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 1.6rem; color: var(--gold); line-height: 1; }
+    .brand-name { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 1.35rem; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; }
+    .site-nav { display: flex; gap: clamp(1rem, 3vw, 2.25rem); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+    .site-nav a { position: relative; color: var(--ink); padding: 0.25rem 0; cursor: pointer; }
+    .site-nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 0; background: var(--gold); transition: width 0.25s ease; }
+    .site-nav a:hover::after, .site-nav a.active::after { width: 100%; }
+    .site-nav a.active { color: var(--gold-deep); }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(3rem, 8vh, 6rem) 1.5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(176, 139, 79, 0.18), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, rgba(15, 27, 45, 0.12), transparent 60%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(15, 27, 45, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 27, 45, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 920px; text-align: center; }
+    .eyebrow { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 1.25rem; }
+    .hero-title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(3.5rem, 11vw, 8.5rem); line-height: 0.95; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
+    .hero-title .line { display: block; }
+    .hero-title .accent { color: var(--gold); font-style: italic; font-weight: 400; }
+    .hero-sub { max-width: 640px; margin: 0 auto 2.75rem; font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--ink-soft); opacity: 0.85; }
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btn {
+      position: relative; display: inline-flex; align-items: center; gap: 0.65rem;
+      padding: 1.1rem 1.75rem; min-width: 260px;
+      background: var(--ink); color: var(--paper); border-radius: 999px;
+      font-weight: 500; letter-spacing: 0.04em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: var(--shadow-sm); overflow: hidden; cursor: pointer;
+    }
+    .cta-btn .cta-label { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; letter-spacing: 0.02em; }
+    .cta-btn .cta-sub { font-size: 0.78rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.18em; }
+    .cta-btn .cta-arrow { margin-left: auto; font-size: 1.25rem; transition: transform 0.25s ease; }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--ink-soft); }
+    .cta-btn:hover .cta-arrow { transform: translateX(4px); }
+    .cta-btn--alt { background: var(--gold); color: var(--white); }
+    .cta-btn--alt:hover { background: var(--gold-deep); }
+
+    .page-hero {
+      position: relative;
+      padding: clamp(4rem, 12vh, 8rem) 1.5rem clamp(3rem, 8vh, 5rem);
+      text-align: center; color: var(--paper); overflow: hidden; background: var(--ink);
+    }
+    .page-hero::before {
+      content: ""; position: absolute; inset: 0; opacity: 0.35;
+      background-position: center; background-size: cover;
+      filter: saturate(0.85) brightness(0.7);
+    }
+    .page-hero--pa::before {
+      background-image: linear-gradient(180deg, rgba(15, 27, 45, 0.55), rgba(15, 27, 45, 0.85)),
+        url("https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1800&q=80");
+    }
+    .page-hero--fl::before {
+      background-image: linear-gradient(180deg, rgba(15, 27, 45, 0.4), rgba(15, 27, 45, 0.8)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80");
+    }
+    .page-hero--agents::before {
+      background-image: linear-gradient(180deg, rgba(15, 27, 45, 0.55), rgba(15, 27, 45, 0.9)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80");
+    }
+    .page-hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
+    .page-hero h1 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin: 0.5rem 0 1rem; }
+    .page-hero .eyebrow { color: var(--gold); }
+    .page-hero-sub { max-width: 620px; margin: 0 auto; color: rgba(247, 244, 239, 0.85); font-size: clamp(1rem, 1.2vw, 1.1rem); }
+
+    .properties { padding: clamp(3rem, 8vh, 6rem) 1.5rem; }
+    .properties-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+    .property-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+    .property-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .property-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--paper-warm); }
+    .property-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .property-card:hover .property-media img { transform: scale(1.04); }
+    .property-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1d2a40 0%, #0f1b2d 100%);
+      color: var(--gold); font-family: "Cormorant Garamond", serif;
+      font-size: 2.25rem; letter-spacing: 0.04em; position: relative;
+    }
+    .property-placeholder::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(176, 139, 79, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 139, 79, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .property-placeholder span { position: relative; text-align: center; padding: 0 1rem; }
+    .property-body { padding: 1.5rem 1.5rem 1.75rem; }
+    .property-title { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 1.75rem; margin: 0 0 0.25rem; line-height: 1.2; }
+    .property-location { font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 1rem; }
+    .property-address { font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+    .agents { padding: clamp(3rem, 8vh, 6rem) 1.5rem; }
+    .agents-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+    .agent-card { display: grid; grid-template-columns: minmax(200px, 260px) 1fr; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .agent-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .agent-media { position: relative; background: var(--paper-warm); overflow: hidden; min-height: 280px; }
+    .agent-media .property-placeholder { font-size: 1.5rem; }
+    .agent-body { padding: 2rem 2rem 2.25rem; display: flex; flex-direction: column; justify-content: center; }
+    .agent-name { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0 0 0.25rem; }
+    .agent-title { font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 1.5rem; }
+    .agent-contact { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+    .agent-contact li { display: flex; flex-direction: column; gap: 0.1rem; font-size: 1rem; }
+    .agent-contact-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .agent-contact a { color: var(--ink); border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color 0.2s ease, border-color 0.2s ease; width: fit-content; }
+    .agent-contact a:hover { color: var(--gold-deep); border-bottom-color: var(--gold); }
+
+    .site-footer { padding: clamp(3rem, 7vh, 5rem) 1.5rem 2rem; background: var(--ink); color: var(--paper); scroll-margin-top: 80px; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); padding-bottom: 2.5rem; border-bottom: 1px solid rgba(247, 244, 239, 0.12); }
+    .footer-col { min-width: 0; }
+    .footer-brand { display: inline-flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
+    .site-footer .brand-mark { color: var(--gold); }
+    .site-footer .brand-name { color: var(--paper); }
+    .footer-about { max-width: 520px; margin: 0; color: rgba(247, 244, 239, 0.78); font-size: 0.98rem; line-height: 1.7; }
+    .footer-heading { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.02em; color: var(--gold); margin: 0 0 1rem; }
+    .footer-address { font-style: normal; color: rgba(247, 244, 239, 0.85); line-height: 1.7; margin: 0 0 1rem; font-size: 0.98rem; }
+    .footer-contact { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.98rem; }
+    .footer-contact a { color: rgba(247, 244, 239, 0.85); transition: color 0.2s ease; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+    .footer-contact a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .footer-copy { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247, 244, 239, 0.5); margin: 2rem 0 0; text-align: center; }
+
+    .preview-notice {
+      position: fixed; bottom: 16px; right: 16px; z-index: 100;
+      background: var(--ink); color: var(--paper);
+      padding: 0.6rem 1rem; border-radius: 999px;
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: var(--shadow-md); opacity: 0.85;
+    }
+
+    @media (max-width: 640px) {
+      .site-nav { gap: 1rem; font-size: 0.78rem; }
+      .cta-btn { min-width: 0; width: 100%; justify-content: center; }
+      .cta-btn .cta-arrow { margin-left: 0.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 620px) {
+      .agent-card { grid-template-columns: 1fr; }
+      .agent-media { aspect-ratio: 4 / 3; min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" data-page="home">
+      <span class="brand-mark">315</span>
+      <span class="brand-name">Realty</span>
+    </a>
+    <nav class="site-nav">
+      <a data-page="pennsylvania">Pennsylvania</a>
+      <a data-page="florida">Florida</a>
+      <a data-page="agents">Leasing Agents</a>
+      <a data-scroll="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section class="page active" data-page-id="home">
+    <main class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Distinctive Homes · Timeless Value</p>
+        <h1 class="hero-title">
+          <span class="line">315</span>
+          <span class="line accent">Realty</span>
+        </h1>
+        <p class="hero-sub">
+          A curated collection of properties across Pennsylvania and Florida — where craftsmanship, location, and opportunity meet.
+        </p>
+        <div class="cta-group">
+          <a class="cta-btn" data-page="pennsylvania">
+            <span class="cta-label">Pennsylvania</span>
+            <span class="cta-sub">Properties</span>
+            <span class="cta-arrow">→</span>
+          </a>
+          <a class="cta-btn cta-btn--alt" data-page="florida">
+            <span class="cta-label">Florida</span>
+            <span class="cta-sub">Properties</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- PENNSYLVANIA -->
+  <section class="page" data-page-id="pennsylvania">
+    <div class="page-hero page-hero--pa">
+      <div class="page-hero-inner">
+        <p class="eyebrow">The Keystone State</p>
+        <h1>Pennsylvania Properties</h1>
+        <p class="page-hero-sub">A portfolio of distinctive properties across Pennsylvania — from Wilkes-Barre to Archbald.</p>
+      </div>
+    </div>
+    <main class="properties">
+      <div class="properties-inner">
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Hilltop Commons</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Hilltop Commons</h2>
+            <p class="property-location">Wilkes-Barre, Pennsylvania</p>
+            <p class="property-address">1325 &amp; 1327 Highway 315 Blvd · Wilkes-Barre, PA 18702</p>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>315 Plaza</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">315 Plaza</h2>
+            <p class="property-location">Wilkes-Barre, Pennsylvania</p>
+            <p class="property-address">1110 PA-315 · Wilkes-Barre, PA 18702</p>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Pic-A-Deli Plaza</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Pic-A-Deli Plaza</h2>
+            <p class="property-location">Wilkes-Barre, Pennsylvania</p>
+            <p class="property-address">1120 PA-315 · Wilkes-Barre, PA 18702</p>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Dolphin Plaza</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Dolphin Plaza</h2>
+            <p class="property-location">Wilkes-Barre, Pennsylvania</p>
+            <p class="property-address">1149 PA-315 · Wilkes-Barre, PA 18702</p>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Pethick Drive Offices</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Pethick Drive Offices</h2>
+            <p class="property-location">Wilkes-Barre, Pennsylvania</p>
+            <p class="property-address">7 Pethick St · Wilkes-Barre, PA 18702</p>
+          </div>
+        </article>
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Trap Plaza</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Trap Plaza</h2>
+            <p class="property-location">Archbald, Pennsylvania</p>
+            <p class="property-address">222 Scranton Carbondale Hwy · Archbald, PA 18403</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </section>
+
+  <!-- FLORIDA -->
+  <section class="page" data-page-id="florida">
+    <div class="page-hero page-hero--fl">
+      <div class="page-hero-inner">
+        <p class="eyebrow">The Sunshine State</p>
+        <h1>Florida Properties</h1>
+        <p class="page-hero-sub">Retail and professional space across Florida.</p>
+      </div>
+    </div>
+    <main class="properties">
+      <div class="properties-inner">
+        <article class="property-card">
+          <div class="property-media"><div class="property-placeholder"><span>Bay Corners Plaza</span></div></div>
+          <div class="property-body">
+            <h2 class="property-title">Bay Corners Plaza</h2>
+            <p class="property-location">Bradenton, Florida</p>
+            <p class="property-address">87th St Ct W &amp; Cortez Rd W · Bradenton, FL 34210</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </section>
+
+  <!-- AGENTS -->
+  <section class="page" data-page-id="agents">
+    <div class="page-hero page-hero--agents">
+      <div class="page-hero-inner">
+        <p class="eyebrow">Meet the Team</p>
+        <h1>Leasing Agents</h1>
+        <p class="page-hero-sub">Work directly with the people behind 315 Realty.</p>
+      </div>
+    </div>
+    <main class="agents">
+      <div class="agents-inner">
+        <article class="agent-card">
+          <div class="agent-media"><div class="property-placeholder"><span>Gene Cosklo Sr.</span></div></div>
+          <div class="agent-body">
+            <h2 class="agent-name">Gene Cosklo Sr.</h2>
+            <p class="agent-title">Founder &amp; President, 315 Realty Corp Inc.</p>
+            <ul class="agent-contact">
+              <li><span class="agent-contact-label">Office</span><a href="tel:+18009521206">Toll Free: 800.952.1206</a></li>
+              <li><span class="agent-contact-label">Mobile</span><a href="tel:+15707601513">(570) 760-1513</a></li>
+              <li><span class="agent-contact-label">Email</span><a href="mailto:dolph315@aol.com">dolph315@aol.com</a></li>
+            </ul>
+          </div>
+        </article>
+        <article class="agent-card">
+          <div class="agent-media"><div class="property-placeholder"><span>Gene Cosklo Jr.</span></div></div>
+          <div class="agent-body">
+            <h2 class="agent-name">Gene Cosklo Jr.</h2>
+            <p class="agent-title">Vice President, 315 Realty Corp.</p>
+            <ul class="agent-contact">
+              <li><span class="agent-contact-label">Office</span><a href="tel:+18009521206">Toll Free: 800.952.1206</a></li>
+              <li><span class="agent-contact-label">Mobile</span><a href="tel:+15707607179">(570) 760-7179</a></li>
+              <li><span class="agent-contact-label">Email</span><a href="mailto:dolph315@aol.com">dolph315@aol.com</a></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </main>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="brand-mark">315</span>
+            <span class="brand-name">Realty</span>
+          </div>
+          <p class="footer-about">
+            315 Realty Corp. owns and manages properties in both Pennsylvania and Florida — providing professional and retail space to businesses just starting or growing here in the United States.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-heading">Contact Us</h3>
+          <address class="footer-address">
+            1149 Highway 315<br />
+            Wilkes-Barre, PA 18702
+          </address>
+          <ul class="footer-contact">
+            <li><a href="tel:+15708291206">(570) 829-1206</a></li>
+            <li><a href="mailto:dolph315@aol.com">dolph315@aol.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> 315 Realty Corp. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="preview-notice">Preview · Placeholders shown until photos are added</div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.site-nav a[data-page]');
+
+    function showPage(id) {
+      pages.forEach(p => p.classList.toggle('active', p.dataset.pageId === id));
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.page === id));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(el.dataset.page);
+      });
+    });
+
+    document.querySelectorAll('[data-scroll]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById(el.dataset.scroll)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
