@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>315 Realty — Distinctive Properties in Pennsylvania & Florida</title>
+  <meta name="description" content="315 Realty showcases distinctive properties across Pennsylvania and Florida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="home">
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">315</span>
+      <span class="brand-name">Realty</span>
+    </a>
+    <nav class="site-nav">
+      <a href="pennsylvania.html">Pennsylvania</a>
+      <a href="florida.html">Florida</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Distinctive Homes · Timeless Value</p>
+      <h1 class="hero-title">
+        <span class="line">315</span>
+        <span class="line accent">Realty</span>
+      </h1>
+      <p class="hero-sub">
+        A curated collection of properties across Pennsylvania and Florida — where craftsmanship, location, and opportunity meet.
+      </p>
+
+      <div class="cta-group" role="group" aria-label="Browse properties by state">
+        <a href="pennsylvania.html" class="cta-btn">
+          <span class="cta-label">Pennsylvania</span>
+          <span class="cta-sub">Properties</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="florida.html" class="cta-btn cta-btn--alt">
+          <span class="cta-label">Florida</span>
+          <span class="cta-sub">Properties</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">315</span>
+        <span class="brand-name">Realty</span>
+      </div>
+      <p class="footer-tag">Representing exceptional properties in Pennsylvania and Florida.</p>
+      <p class="footer-copy">© <span id="year"></span> 315 Realty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Florida Properties — 315 Realty</title>
+  <meta name="description" content="Explore 315 Realty's Florida properties." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">315</span>
+      <span class="brand-name">Realty</span>
+    </a>
+    <nav class="site-nav">
+      <a href="pennsylvania.html">Pennsylvania</a>
+      <a href="florida.html" class="active">Florida</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-hero page-hero--fl">
+    <div class="page-hero-inner">
+      <p class="eyebrow">The Sunshine State</p>
+      <h1>Florida Properties</h1>
+      <p class="page-hero-sub">Coastal escapes, sun-soaked residences, and investment opportunities across Florida.</p>
+    </div>
+  </section>
+
+  <main class="properties">
+    <div class="properties-inner">
+      <!-- Property cards will be added here as photos and descriptions are provided. -->
+
+      <div class="empty-state">
+        <h2>Coming Soon</h2>
+        <p>Our Florida listings are being curated. Check back shortly to explore featured properties.</p>
+      </div>
+
+      <!-- PROPERTY CARD TEMPLATE — add new properties below:
+      <article class="property-card">
+        <div class="property-media">
+          <img src="images/florida/property-1.jpg" alt="Property name" />
+        </div>
+        <div class="property-body">
+          <h2 class="property-title">Property Name</h2>
+          <p class="property-location">City, Florida</p>
+          <p class="property-description">Full description goes here.</p>
+          <ul class="property-specs">
+            <li><span>Beds</span><strong>—</strong></li>
+            <li><span>Baths</span><strong>—</strong></li>
+            <li><span>Sq Ft</span><strong>—</strong></li>
+          </ul>
+        </div>
+      </article>
+      -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">315</span>
+        <span class="brand-name">Realty</span>
+      </div>
+      <p class="footer-tag">Representing exceptional properties in Pennsylvania and Florida.</p>
+      <p class="footer-copy">© <span id="year"></span> 315 Realty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
