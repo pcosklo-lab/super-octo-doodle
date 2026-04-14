@@ -16,8 +16,10 @@
   --paper-warm: #eee7db;
   --muted: #6b7280;
   --line: rgba(15, 27, 45, 0.12);
-  --gold: #b08b4f;
-  --gold-deep: #8e6c36;
+  /* "gold" variables kept for naming continuity but now navy */
+  --gold: #2e5aa0;
+  --gold-deep: #1a3a73;
+  --accent-light: #c9d6ea;
   --white: #ffffff;
 
   --radius-sm: 6px;
@@ -147,7 +149,7 @@ a {
   padding: clamp(3rem, 8vh, 6rem) 1.5rem;
   overflow: hidden;
   background:
-    radial-gradient(1200px 600px at 85% -10%, rgba(176, 139, 79, 0.18), transparent 60%),
+    radial-gradient(1200px 600px at 85% -10%, rgba(46, 90, 160, 0.16), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(15, 27, 45, 0.12), transparent 60%),
     linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
 }
@@ -261,12 +263,15 @@ a {
 }
 
 .cta-btn--alt {
-  background: var(--gold);
-  color: var(--white);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: none;
 }
 
 .cta-btn--alt:hover {
-  background: var(--gold-deep);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 /* --------- Property Page Hero --------- */
@@ -322,7 +327,7 @@ a {
 }
 
 .page-hero .eyebrow {
-  color: var(--gold);
+  color: var(--accent-light);
 }
 
 .page-hero-sub {
@@ -611,7 +616,7 @@ a {
 }
 
 .site-footer .brand-mark {
-  color: var(--gold);
+  color: var(--accent-light);
 }
 
 .site-footer .brand-name {
@@ -631,7 +636,7 @@ a {
   font-weight: 500;
   font-size: 1.5rem;
   letter-spacing: 0.02em;
-  color: var(--gold);
+  color: var(--accent-light);
   margin: 0 0 1rem;
 }
 
@@ -661,8 +666,8 @@ a {
 }
 
 .footer-contact a:hover {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
+  color: var(--accent-light);
+  border-bottom-color: var(--accent-light);
 }
 
 .footer-copy {

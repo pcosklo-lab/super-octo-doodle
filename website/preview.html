@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>315 Realty — Preview</title>
-  <meta name="description" content="315 Realty — single-file preview of the full website." />
+  <title>315 Realty Corp — Preview</title>
+  <meta name="description" content="315 Realty Corp — single-file preview of the full website." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -16,8 +16,9 @@
       --paper-warm: #eee7db;
       --muted: #6b7280;
       --line: rgba(15, 27, 45, 0.12);
-      --gold: #b08b4f;
-      --gold-deep: #8e6c36;
+      --gold: #2e5aa0;
+      --gold-deep: #1a3a73;
+      --accent-light: #c9d6ea;
       --white: #ffffff;
       --radius-sm: 6px;
       --radius-md: 12px;
@@ -68,7 +69,7 @@
       padding: clamp(3rem, 8vh, 6rem) 1.5rem;
       overflow: hidden;
       background:
-        radial-gradient(1200px 600px at 85% -10%, rgba(176, 139, 79, 0.18), transparent 60%),
+        radial-gradient(1200px 600px at 85% -10%, rgba(46, 90, 160, 0.16), transparent 60%),
         radial-gradient(900px 500px at -10% 110%, rgba(15, 27, 45, 0.12), transparent 60%),
         linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
     }
@@ -102,8 +103,8 @@
     .cta-btn .cta-arrow { margin-left: auto; font-size: 1.25rem; transition: transform 0.25s ease; }
     .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--ink-soft); }
     .cta-btn:hover .cta-arrow { transform: translateX(4px); }
-    .cta-btn--alt { background: var(--gold); color: var(--white); }
-    .cta-btn--alt:hover { background: var(--gold-deep); }
+    .cta-btn--alt { background: transparent; color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
+    .cta-btn--alt:hover { background: var(--ink); color: var(--paper); }
 
     .page-hero {
       position: relative;
@@ -129,7 +130,7 @@
     }
     .page-hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
     .page-hero h1 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin: 0.5rem 0 1rem; }
-    .page-hero .eyebrow { color: var(--gold); }
+    .page-hero .eyebrow { color: var(--accent-light); }
     .page-hero-sub { max-width: 620px; margin: 0 auto; color: rgba(247, 244, 239, 0.85); font-size: clamp(1rem, 1.2vw, 1.1rem); }
 
     .properties { padding: clamp(3rem, 8vh, 6rem) 1.5rem; }
@@ -143,14 +144,14 @@
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
       background: linear-gradient(135deg, #1d2a40 0%, #0f1b2d 100%);
-      color: var(--gold); font-family: "Cormorant Garamond", serif;
+      color: var(--accent-light); font-family: "Cormorant Garamond", serif;
       font-size: 2.25rem; letter-spacing: 0.04em; position: relative;
     }
     .property-placeholder::before {
       content: ""; position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(176, 139, 79, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(176, 139, 79, 0.08) 1px, transparent 1px);
+        linear-gradient(rgba(201, 214, 234, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 214, 234, 0.08) 1px, transparent 1px);
       background-size: 32px 32px;
     }
     .property-placeholder span { position: relative; text-align: center; padding: 0 1rem; }
@@ -179,14 +180,14 @@
     .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); padding-bottom: 2.5rem; border-bottom: 1px solid rgba(247, 244, 239, 0.12); }
     .footer-col { min-width: 0; }
     .footer-brand { display: inline-flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
-    .site-footer .brand-mark { color: var(--gold); }
+    .site-footer .brand-mark { color: var(--accent-light); }
     .site-footer .brand-name { color: var(--paper); }
     .footer-about { max-width: 520px; margin: 0; color: rgba(247, 244, 239, 0.78); font-size: 0.98rem; line-height: 1.7; }
-    .footer-heading { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.02em; color: var(--gold); margin: 0 0 1rem; }
+    .footer-heading { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.02em; color: var(--accent-light); margin: 0 0 1rem; }
     .footer-address { font-style: normal; color: rgba(247, 244, 239, 0.85); line-height: 1.7; margin: 0 0 1rem; font-size: 0.98rem; }
     .footer-contact { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.98rem; }
     .footer-contact a { color: rgba(247, 244, 239, 0.85); transition: color 0.2s ease; border-bottom: 1px solid transparent; padding-bottom: 1px; }
-    .footer-contact a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .footer-contact a:hover { color: var(--accent-light); border-bottom-color: var(--accent-light); }
     .footer-copy { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247, 244, 239, 0.5); margin: 2rem 0 0; text-align: center; }
 
     .preview-notice {
@@ -213,7 +214,7 @@
   <header class="site-header">
     <a class="brand" data-page="home">
       <span class="brand-mark">315</span>
-      <span class="brand-name">Realty</span>
+      <span class="brand-name">Realty Corp</span>
     </a>
     <nav class="site-nav">
       <a data-page="pennsylvania">Pennsylvania</a>
@@ -230,7 +231,7 @@
         <p class="eyebrow">Distinctive Homes · Timeless Value</p>
         <h1 class="hero-title">
           <span class="line">315</span>
-          <span class="line accent">Realty</span>
+          <span class="line accent">Realty Corp</span>
         </h1>
         <p class="hero-sub">
           A curated collection of properties across Pennsylvania and Florida — where craftsmanship, location, and opportunity meet.
@@ -382,7 +383,7 @@
         <div class="footer-col">
           <div class="footer-brand">
             <span class="brand-mark">315</span>
-            <span class="brand-name">Realty</span>
+            <span class="brand-name">Realty Corp</span>
           </div>
           <p class="footer-about">
             315 Realty Corp. owns and manages properties in both Pennsylvania and Florida — providing professional and retail space to businesses just starting or growing here in the United States.
