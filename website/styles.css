@@ -461,10 +461,10 @@ a {
 
 /* --------- Footer --------- */
 .site-footer {
-  padding: 3rem 1.5rem 2rem;
+  padding: clamp(3rem, 7vh, 5rem) 1.5rem 2rem;
   background: var(--ink);
   color: var(--paper);
-  text-align: center;
+  scroll-margin-top: 80px;
 }
 
 .footer-inner {
@@ -472,11 +472,23 @@ a {
   margin: 0 auto;
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(247, 244, 239, 0.12);
+}
+
+.footer-col {
+  min-width: 0;
+}
+
 .footer-brand {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .site-footer .brand-mark {
@@ -487,19 +499,67 @@ a {
   color: var(--paper);
 }
 
-.footer-tag {
-  max-width: 500px;
-  margin: 0 auto 1.5rem;
-  color: rgba(247, 244, 239, 0.75);
-  font-size: 0.95rem;
+.footer-about {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(247, 244, 239, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.footer-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+
+.footer-address {
+  font-style: normal;
+  color: rgba(247, 244, 239, 0.85);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  font-size: 0.98rem;
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.98rem;
+}
+
+.footer-contact a {
+  color: rgba(247, 244, 239, 0.85);
+  transition: color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+.footer-contact a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
 }
 
 .footer-copy {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(247, 244, 239, 0.55);
-  margin: 0;
+  color: rgba(247, 244, 239, 0.5);
+  margin: 2rem 0 0;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 /* --------- Responsive --------- */
